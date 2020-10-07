@@ -1,0 +1,24 @@
+<p>home works!</p>
+<a routerLink="./hi">go to home/hi</a>
+<router-outlet></router-outlet>
+<form
+  [formGroup]="this.auth.loginForm"
+  (ngSubmit)="onSubmit(this.auth.loginForm)"
+>
+  <label for="chiave"
+    ><p>La parola magica</p>
+    <input type="text" formControlName="word" placeholder="scrivi qui" />
+  </label>
+
+  <p
+    *ngIf="this.auth.loginForm.get('word').hasError('minlength')"
+    style="color: red"
+  >
+    La parola è formata da almeno 8 caratteri
+  </p>
+
+  <button type="submit">Invia parola segreta</button>
+  <button type="button" (click)="onReset(this.auth.loginForm)">
+    Resetta il form
+  </button>
+</form>
