@@ -1,1 +1,19 @@
 <p>user works!</p>
+
+<form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">
+  <label for="name">
+    Nome
+    <input id="name" type="text" name="name" [(ngModel)]="userInfo.name" />
+  </label>
+  <label for="name">
+    Nome
+    <input
+      id="surname"
+      type="text"
+      name="surname"
+      [(ngModel)]="userInfo.surname"
+    />
+  </label>
+
+  <button type="submit">Invia</button>
+</form>
