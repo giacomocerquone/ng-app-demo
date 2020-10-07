@@ -1,2 +1,7 @@
-<a routerLink="/home"> link to user component</a>
+<a routerLink="/home"> link to home component</a>
+<a [routerLink]="[{ outlets: { primary: ['home'], out: ['user'] } }]">
+  Link to user component
+</a>
+
 <router-outlet></router-outlet>
+<router-outlet name="out"></router-outlet>
