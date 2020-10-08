@@ -1,19 +1,23 @@
-<p>user works!</p>
+<p>Denaro:</p>
 
-<form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">
-  <label for="name">
-    Nome
-    <input id="name" type="text" name="name" [(ngModel)]="userInfo.name" />
-  </label>
-  <label for="name">
-    Nome
-    <input
-      id="surname"
-      type="text"
-      name="surname"
-      [(ngModel)]="userInfo.surname"
-    />
-  </label>
+<input
+  type="text"
+  placeholder="inserisci il denaro da convertire"
+  [(ngModel)]="money"
+/>
 
-  <button type="submit">Invia</button>
-</form>
+<p>Converti da:</p>
+
+<select [(ngModel)]="from">
+  <option value="EUR">Euro</option>
+  <option value="USD">Dollaro</option>
+</select>
+
+<p>a:</p>
+
+<select [(ngModel)]="to">
+  <option value="EUR">Euro</option>
+  <option value="USD">Dollaro</option>
+</select>
+
+<p>From {{ money }} EUR to USD: {{ money | currConverter: from:to }}</p>

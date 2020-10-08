@@ -17,8 +17,23 @@
     La parola è formata da almeno 8 caratteri
   </p>
 
+  <ng-container *ngIf="fieldAdded">
+    <label for="chiave"
+      ><p>Il test</p>
+      <input type="text" formControlName="test" placeholder="test" />
+    </label>
+
+    <p
+      *ngIf="this.auth.loginForm.get('test').hasError('required')"
+      style="color: red"
+    >
+      il test è richiesto
+    </p>
+  </ng-container>
+
   <button type="submit">Invia parola segreta</button>
   <button type="button" (click)="onReset(this.auth.loginForm)">
     Resetta il form
   </button>
+  <button type="button" (click)="addField()">Aggiungi campo</button>
 </form>

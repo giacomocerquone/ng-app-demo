@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -6,16 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  public userInfo = {
-    name: '',
-    surname: '',
-  };
+  from: 'EUR' | 'USD';
+  to: 'EUR' | 'USD';
+  money: string;
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  onSubmit(heroForm) {
-    console.log(heroForm, this.userInfo);
-  }
 }
