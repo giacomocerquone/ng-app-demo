@@ -1,0 +1,32 @@
+name: Deploy ng-app
+
+on:
+  push:
+    branches:
+      - prod
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: prod
+      - name: Use Node.js 14.10.1
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.10.1"
+      - run: npm ci
+      - run: npm run build
+      - name: copy the built project in the vps
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "./dist/"
+          target: "/home/my-ng-app"
+          overwrite: true
