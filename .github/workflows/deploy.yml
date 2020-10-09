@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "14.10.1"
       - run: npm ci
-      - run: npm run build
+      - run: npm run build -- --base-href my-app
       - name: copy the built project in the vps
         uses: appleboy/scp-action@master
         with:
